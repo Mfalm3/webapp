@@ -1,6 +1,7 @@
 <?php
 
 require_once 'loader/loader.php';
+include("templates/header.php");
 
 if (Input::exists()) {
     $validate = new Validate();
@@ -12,7 +13,7 @@ if (Input::exists()) {
             'max' => 50
         ),
         'email' => array(
-            'name' => 'Username',
+            'name' => 'email',
             'required' => true,
             'min' => 2,
             'max' => 20,
@@ -35,7 +36,7 @@ if (Input::exists()) {
         try {
             $user->create(array(
                 'name' => Input::get('name'),
-                'email' => Input::get('username'),
+                'email' => Input::get('email'),
                 'password' => Hash::make(Input::get('password')),
                 'isAdmin' => 0
             ));
@@ -52,26 +53,43 @@ if (Input::exists()) {
 }
 ?>
 
-<form action="" method="post">
-    <div class="field">
-        <label for="name">Name</label>
-        <input type="text" name="name" required value="<?php echo escape(Input::get('name')); ?>" id="name">
-    </div>
+<div class="container mt-4 d-flex justify-content-center">
+    <div class="col-7">
+        <div class="card">
 
-    <div class="field">
-        <label for="email">Email</label>
-        <input type="email" name="email" required id="email" value="<?php echo escape(Input::get('username')); ?>">
-    </div>
+            <div class="card-header ">
+                <h4 class="card-title">Registration Form</h4>
+            </div>
 
-    <div class="field">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-    </div>
+            <div class="card-body ">
 
-    <div class="field">
-        <label for="password_again">Password Confirmation</label>
-        <input type="password" name="password_again" id="password_again" value="">
-    </div>
+                <form method="post" action="">
+                    <label for="name">Name</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" required value="<?php echo escape(Input::get('name')); ?>" id="name">
+                    </div>
 
-    <input type="submit" value="Register">
-</form>
+                    <label for="email">Email address</label>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" required id="email" value="<?php echo escape(Input::get('email')); ?>">
+                    </div>
+
+                    <label for="password">Password</label>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" id="password">
+                    </div>
+
+                    <label for="password_again">Password Confirmation</label>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password_again" id="password_again">
+                    </div>
+
+            </div>
+
+            <div class="card-footer ">
+                <button type="submit" class="btn btn-fill btn-primary">Submit</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

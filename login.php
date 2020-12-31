@@ -1,7 +1,7 @@
 <?php
 
 require_once 'loader/loader.php';
-
+include("templates/header.php");
 if (Input::exists()) {
 
     $validate = new Validate();
@@ -29,22 +29,44 @@ if (Input::exists()) {
 }
 ?>
 
-<form action="" method="post">
-    <div class="field">
-        <label for='email'>Email</label>
-        <input type="text" name="email" id="email">
-    </div>
 
-    <div class="field">
-        <label for='password'>Password</label>
-        <input type="password" name="password" id="password">
-    </div>
+<div class="container mt-4 d-flex justify-content-center">
+    <div class="col-7">
+        <div class="card">
 
-    <div class="field">
-        <label for="remember">
-            <input type="checkbox" name="remember" id="remember">Remember me
-        </label>
-    </div>
+            <div class="card-header ">
+                <h4 class="card-title">Login Form</h4>
+            </div>
 
-    <input type="submit" value="Login">
-</form>
+            <div class="card-body ">
+
+                <form method="post" action="">
+
+                    <label for="email">Email address</label>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" required id="email" value="<?php echo escape(Input::get('email')); ?>">
+                    </div>
+
+                    <label for="password">Password</label>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" id="password">
+                    </div>
+
+                    <div class="form-check mt-3">
+                        <label class="form-check-label" for="remember">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                            <span class="form-check-sign"></span>
+                            Remember me
+                        </label>
+                    </div>
+
+
+            </div>
+
+            <div class="card-footer ">
+                <button type="submit" class="btn btn-fill btn-primary">Submit</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

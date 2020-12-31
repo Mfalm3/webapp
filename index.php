@@ -1,6 +1,7 @@
 <?php
 
 require_once 'loader/loader.php';
+include("templates/header.php");
 
 if(Session::exists('home')) {
     echo '<p>' . Session::get('home'). '</p>';
@@ -17,5 +18,5 @@ if($user->isLoggedIn()) {
     }
 
 } else {
-    echo '<p>You need to <a href="login.php">login</a> or <a href="register.php">register.</a></p>';
+    echo '<div class="container"><p class="mt-5 text-center">You need to <a href="login.php">login</a> or <a href="register.php">register.</a></p></div>';
 }
